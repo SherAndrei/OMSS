@@ -10,12 +10,12 @@
 
 \noindent На торце $\Sigma_2$ $\vec{p^n} \neq 0$, причем
 $$\int_{\Sigma_2} {\vec{p^n} d{\sigma}} = 0,
-\int_{\Sigma_2} (\vec{r} \times \vec{p^n}) d{\sigma} = \vec{M} \neq 0,$$
+  \int_{\Sigma_2} (\vec{r} \times \vec{p^n}) d{\sigma} = \vec{M} \neq 0,$$
 
 \noindent т.е. на торце $\Sigma_2$ балки действует пары сил с общим моментом $\vec{M}$. Балка по условию находиться в равновесии, поэтому на торце $\Sigma_1$
 
 $$\int_{\Sigma_1} {\vec{p^n} d{\sigma}} = 0,
-\int_{\Sigma_1} (\vec{r} \times \vec{p^n}) d{\sigma} = -\vec{M}$$
+  \int_{\Sigma_1} (\vec{r} \times \vec{p^n}) d{\sigma} = -\vec{M}$$
 
 \noindent В общем случае момент $\vec{M}$ может иметь произвольное направление.
 
@@ -53,13 +53,13 @@ $$ \alpha = \frac{M}{J} $$
 \noindent Тогда тензор напряжений во всех точках балки имеет вид:
 
 \begin{equation*}
-||p_{ij}|| = \left(
-\begin{array}{ccc}
--\frac{M}{J}y & 0 & 0 \\
-0 & 0 & 0 \\
-0 & 0 & 0 \\
-\end{array}
-\right)
+  ||p_{ij}|| = \left(
+  \begin{array}{ccc}
+      -\frac{M}{J}y & 0 & 0 \\
+      0             & 0 & 0 \\
+      0             & 0 & 0 \\
+    \end{array}
+  \right)
 \end{equation*}
 
 Закон Гука
@@ -69,10 +69,10 @@ $$ \varepsilon_{ij} = \frac{1}{E} \left[ (1+\sigma)p_{ij} - \sigma \mathfrak{P} 
 Примем, что температура во всех точках балки одинакова. Тогда по закону Гука можно вычислить компоненты тензора деформаций
 
 \begin{equation}
-\begin{array}{cc}
-\varepsilon_{11} = -\frac{My}{EJ} = \frac{\partial w_1}{\partial x} & \varepsilon_{22} = \frac{\sigma My}{EJ} = \frac{\partial w_2}{\partial y} \\
-\varepsilon_{33} = \frac{\sigma My}{EJ} = \frac{\partial w_3}{\partial z} & \varepsilon_{12} = \varepsilon_{23} = \varepsilon_{13} = 0
-\end{array}
+  \begin{array}{cc}
+    \varepsilon_{11} = -\frac{My}{EJ} = \frac{\partial w_1}{\partial x}       & \varepsilon_{22} = \frac{\sigma My}{EJ} = \frac{\partial w_2}{\partial y} \\
+    \varepsilon_{33} = \frac{\sigma My}{EJ} = \frac{\partial w_3}{\partial z} & \varepsilon_{12} = \varepsilon_{23} = \varepsilon_{13} = 0
+  \end{array}
 \end{equation}
 
 Отсюда видно, что при чистом изгибе элементы балки, совпадающие с осью $x$, не испытывают удлинения, ни сжатия. Элементы, параллельные оси $x$, при $y>0$ сжимаются, а при $y<0$ растягиваются.
@@ -80,22 +80,22 @@ $$ \varepsilon_{ij} = \frac{1}{E} \left[ (1+\sigma)p_{ij} - \sigma \mathfrak{P} 
 Из (1) можно найти вектор перемещения
 
 \begin{equation}
-\begin{array}{cc}
-w_1 =& - \frac{Myx}{EJ} \\
-w_2 =& \frac{M}{2EJ}[x^2 + \sigma (y^2 - z^2)] \\
-w_3 =& \frac{\sigma Myz}{EJ}
-\end{array}
+  \begin{array}{cc}
+    w_1 = & - \frac{Myx}{EJ}                        \\
+    w_2 = & \frac{M}{2EJ}[x^2 + \sigma (y^2 - z^2)] \\
+    w_3 = & \frac{\sigma Myz}{EJ}
+  \end{array}
 \end{equation}
 
 
 Любая точка балки $(x_0, y_0, z_0)$ переходит в точку с координатами $(x, y, z)$ по формулам
 
 \begin{equation}
-\begin{array}{cc}
-x =& x_0 + w_1 = x_0 - \frac{My_0x_0}{EJ} \\
-y =& y_0 + w_2 = y_0 + \frac{M}{2EJ}[x_0^2 + \sigma (y_0^2 - z_0^2)] \\
-z =& z_0 + w_3 = z_0 + \frac{\sigma My_0z_0}{EJ}\\
-\end{array}
+  \begin{array}{cc}
+    x = & x_0 + w_1 = x_0 - \frac{My_0x_0}{EJ}                            \\
+    y = & y_0 + w_2 = y_0 + \frac{M}{2EJ}[x_0^2 + \sigma (y_0^2 - z_0^2)] \\
+    z = & z_0 + w_3 = z_0 + \frac{\sigma My_0z_0}{EJ}                     \\
+  \end{array}
 \end{equation}
 
 Тогда уравнение изогнутой оси балки $(y_0 = z_0 = 0)$ имеет вид
