@@ -1,37 +1,42 @@
-name: Makefile CI
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
+
+  workflow_dispatch:
 
 jobs:
-  build_pdf:
-
+  build_and_publish:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install and update pdflatex
-      run: sudo apt-get update && sudo apt-get install texlive-latex-base texlive-lang-cyrillic texlive-extra-utils texlive-latex-extra texlive-science texlive-fonts-extra
-      
-    - name: Checkout
-      uses: actions/checkout@v3
-    
-    - name: Convert to pdf
-      run: make
-      
-    - run: ls
-      #Move PDFs to separate folder
-    - run: mkdir output
-    - run: mv tickets_main.pdf output/tickets.pdf
-    - run: mv course_programm.pdf output/course_programm.pdf
-     
-    - name: Save PDFs
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: Tickets
-        path: output/*.pdf
-        retention-days: 90
-      
-      
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+
+      - name: Build PDF files
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: |
+            course_programm.tex
+            tickets_main.tex
+          latexmk_shell_escape: true
+          extra_system_packages: gnuplot
+
+      - name: Gather build artifacts
+        if: always()
+        run: |
+          mkdir -p build build/logs
+          mv *.pdf ./build/ || true
+          find . -name "*.log" -exec mv '{}' "./build/logs/" ";";
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: Contents
+          path: build/
+          retention-days: 90
+          if-no-files-found: error
